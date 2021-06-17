@@ -24,19 +24,22 @@ export default class ShowInfo extends React.Component {
     if (!this.state.editMode) {
       return (
         <div className="ShowInfo">
-          <h2>{this.props.title}</h2>
-          {Object.keys(fields).map((field) =>
-            <div className="field" key={fields[field].fieldName}>
-              {fields[field].fieldName}: {fields[field].value}
-            </div>
-          )}
-          <button className="button" onClick={() => {this.setEditMode(true)}}>edit</button>
+          <fieldset>
+            <legend>{this.props.title}</legend>
+            {Object.keys(fields).map((field) =>
+              <div className="field" key={fields[field].fieldName}>
+                {fields[field].fieldName}: {fields[field].value}
+              </div>
+            )}
+            <button className="button" onClick={() => {this.setEditMode(true)}}>edit</button>
+          </fieldset>
         </div>
       )
     } else {
       return (
         <div className="ShowInfo">
-          <h2>{this.props.title}</h2>
+          <fieldset>
+            <legend>{this.props.title}</legend>
             {Object.keys(fields).map((field) =>
               <div className="field" key={fields[field].fieldName}>
                 {fields[field].fieldName}: <input
@@ -48,6 +51,7 @@ export default class ShowInfo extends React.Component {
               </div>
             )}
             <button className="button" onClick={() => {this.setEditMode(false)}}>save</button>
+          </fieldset>
         </div>
       )
     }
